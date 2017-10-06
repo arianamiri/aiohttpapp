@@ -1,5 +1,9 @@
 FROM python:3.6.3
 
+# INSTALL DB CLIENT
+RUN apt-get update
+RUN apt-get install postgresql postgresql-client
+
 ENV APP_DIR /opt/bakeoff
 
 RUN mkdir ${APP_DIR}

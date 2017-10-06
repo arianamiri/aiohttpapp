@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    image: bakeoff
+    container_name: foo
+    ports:
+      - "5858:5858"
+  db:
+    image: postgres:10
+    container_name: bar
+    environment:
+      POSTGRES_PASSWORD: password
