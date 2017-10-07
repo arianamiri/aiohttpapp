@@ -6,6 +6,7 @@ setup(
     packages=find_packages(),
     install_requires=(
         'aiohttp==2.2.5',
+        'alembic==0.9.5',
         'psycopg2==2.7.3.1',
         'SQLAlchemy==1.1.14',
     )
