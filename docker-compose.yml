@@ -5,9 +5,6 @@ services:
     ports:
       - "5858:5858"
   db:
-    image: postgres:10
-    environment:
-      POSTGRES_DB:
-      POSTGRES_PASSWORD: password
+    image: local/dev_db
     volumes:
       - "./volumes/db:/var/lib/postgresql/data"
