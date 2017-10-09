@@ -12,7 +12,7 @@ class Stylist(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
 
-    assortments = relationship('Assortment', back_populates='stylist')
+    picks = relationship('Picks', back_populates='stylist')
 
 
 class Customer(Base):
@@ -24,25 +24,7 @@ class Customer(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
 
-    assortments = relationship('Assortment', back_populates='customer')
-
-
-class Assortment(Base):
-    """
-    Orm class for assortments.
-
-    An assortment is a collection of "picks" (aka products) that a stylist
-    has chosen for a customer.
-    """
-    __tablename__ = 'assortment'
-
-    id = Column(Integer, primary_key=True)
-    stylist_id = Column(Integer, ForeignKey('stylist.id'))
-    customer_id = Column(Integer, ForeignKey('customer.id'))
-
-    stylist = relationship('Stylist', back_populates='assortments')
-    customer = relationship('Customer', back_populates='assortments')
-    picks = relationship('Picks', back_populates='assortment')
+    picks = relationship('Picks', back_populates='customer')
 
 
 class Picks(Base):
@@ -57,6 +39,8 @@ class Picks(Base):
     id = Column(Integer, primary_key=True)
     ruecom_id = Column(Integer)
 
-    assortment_id = Column(Integer, ForeignKey('assortment.id'))
-
-    assortment = relationship('Assortment', back_populates='picks')
+    stylist_id = Column(Integer, ForeignKey('stylist.id'))
+    customer_id = Column(Integer, ForeignKey('customer.id'))
+    
+    stylist = relationship('Stylist', back_populates='picks')
+    customer = relationship('Customer', back_populates='picks')
