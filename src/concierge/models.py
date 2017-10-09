@@ -62,6 +62,3 @@ class Picks(Base):
     assortment_id = Column(Integer, ForeignKey('assortment.id'))
 
     assortment = relationship('Assortment', back_populates='picks')
-
-
-Base.metadata.create_all(connection)
