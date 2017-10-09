@@ -56,8 +56,6 @@ class Picks(Base):
 
     id = Column(Integer, primary_key=True)
     ruecom_id = Column(Integer)
-    product_name = Column(String(255))
-    product_image_url = Column(String(255))
 
     assortment_id = Column(Integer, ForeignKey('assortment.id'))
 
