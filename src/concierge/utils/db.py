@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import sessionmaker
 
 
 def get_connection(user='concierge_app', password='password', host='db', db='concierge'):
@@ -23,3 +23,4 @@ def get_connection(user='concierge_app', password='password', host='db', db='con
 
 Base = declarative_base()
 connection, metadata = get_connection()
+Session = sessionmaker(bind=connection)
